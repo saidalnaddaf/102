@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CUPOD — Online English Communication Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #1DB954;
+    --green-dark: #15a046;
+    --green-light: #24e066;
+    --black: #0a0a0a;
+    --dark: #111111;
+    --dark2: #1a1a1a;
+    --white: #f5f5f0;
+    --gray: #888;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 40px;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 28px;
+    color: var(--green);
+    letter-spacing: 2px;
+  }
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+  .nav-links a {
+    color: var(--gray);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: .04em;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--white); }
+  .nav-cta {
+    background: var(--green);
+    color: var(--black) !important;
+    padding: 9px 22px;
+    border-radius: 4px;
+    font-weight: 700 !important;
+    letter-spacing: .05em;
+    transition: background .2s, transform .15s !important;
+  }
+  .nav-cta:hover { background: var(--green-light) !important; transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 160px 40px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 60% at 80% 20%, rgba(29,185,84,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 40% at 10% 80%, rgba(29,185,84,0.08) 0%, transparent 55%),
+      var(--black);
+  }
+  .hero-noise {
+    position: absolute; inset: 0;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+  .hero-tag {
+    position: relative;
+    display: inline-block;
+    background: var(--green);
+    color: var(--black);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    padding: 6px 14px;
+    border-radius: 3px;
+    margin-bottom: 24px;
+    width: fit-content;
+    animation: fadeUp .6s ease both;
+  }
+  .hero h1 {
+    position: relative;
+    font-family: var(--font-display);
+    font-size: clamp(72px, 12vw, 160px);
+    line-height: .95;
+    letter-spacing: 1px;
+    color: var(--white);
+    animation: fadeUp .7s .1s ease both;
+  }
+  .hero h1 em {
+    color: var(--green);
+    font-style: normal;
+  }
+  .hero-sub {
+    position: relative;
+    margin-top: 28px;
+    font-size: clamp(16px, 2vw, 20px);
+    color: var(--gray);
+    max-width: 520px;
+    font-weight: 300;
+    animation: fadeUp .7s .2s ease both;
+  }
+  .hero-actions {
+    position: relative;
+    display: flex; gap: 16px; align-items: center; flex-wrap: wrap;
+    margin-top: 40px;
+    animation: fadeUp .7s .3s ease both;
+  }
+  .btn-primary {
+    background: var(--green);
+    color: var(--black);
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    padding: 16px 36px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background .2s, transform .15s;
+  }
+  .btn-primary:hover { background: var(--green-light); transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent;
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: .04em;
+    padding: 15px 36px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: border-color .2s, background .2s;
+  }
+  .btn-outline:hover { border-color: var(--green); color: var(--green); }
+  .hero-stats {
+    position: relative;
+    display: flex; gap: 48px; flex-wrap: wrap;
+    margin-top: 64px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    animation: fadeUp .7s .4s ease both;
+  }
+  .hero-stat-num {
+    font-family: var(--font-display);
+    font-size: 42px;
+    color: var(--green);
+    letter-spacing: 1px;
+    line-height: 1;
+  }
+  .hero-stat-lbl { font-size: 13px; color: var(--gray); margin-top: 4px; }
+
+  /* TICKER */
+  .ticker {
+    background: var(--green);
+    overflow: hidden;
+    padding: 14px 0;
+    white-space: nowrap;
+  }
+  .ticker-inner {
+    display: inline-block;
+    animation: ticker 22s linear infinite;
+  }
+  .ticker-inner span {
+    font-family: var(--font-display);
+    font-size: 20px;
+    letter-spacing: 2px;
+    color: var(--black);
+    padding: 0 32px;
+  }
+  .ticker-dot {
+    color: var(--black);
+    opacity: .4;
+  }
+
+  /* SECTION */
+  section { padding: 100px 40px; }
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .18em;
+    color: var(--green);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(40px, 6vw, 80px);
+    line-height: 1;
+    letter-spacing: .5px;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+  .section-body {
+    font-size: 17px;
+    color: var(--gray);
+    max-width: 580px;
+    line-height: 1.8;
+  }
+
+  /* HOW IT WORKS */
+  .how { background: var(--dark); }
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2px;
+    margin-top: 60px;
+  }
+  .step-card {
+    background: var(--dark2);
+    padding: 40px 32px;
+    position: relative;
+    overflow: hidden;
+    transition: background .2s;
+  }
+  .step-card:hover { background: #202020; }
+  .step-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--green);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .35s ease;
+  }
+  .step-card:hover::before { transform: scaleX(1); }
+  .step-num {
+    font-family: var(--font-display);
+    font-size: 64px;
+    color: rgba(29,185,84,0.12);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .step-title {
+    font-family: var(--font-display);
+    font-size: 26px;
+    color: var(--white);
+    margin-bottom: 12px;
+    letter-spacing: .5px;
+  }
+  .step-body { font-size: 14px; color: var(--gray); line-height: 1.8; }
+  .step-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 20px; }
+  .pill {
+    background: rgba(29,185,84,0.1);
+    color: var(--green);
+    border: 1px solid rgba(29,185,84,0.25);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    padding: 4px 10px;
+    border-radius: 3px;
+  }
+
+  /* PROGRAM */
+  .program-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 60px;
+    align-items: start;
+  }
+  .program-months { display: flex; flex-direction: column; gap: 3px; }
+  .month-card {
+    background: var(--dark2);
+    border-left: 3px solid transparent;
+    padding: 24px 28px;
+    cursor: pointer;
+    transition: background .2s, border-color .2s;
+    position: relative;
+  }
+  .month-card:hover, .month-card.active {
+    background: #1f1f1f;
+    border-left-color: var(--green);
+  }
+  .month-card.active .month-label { color: var(--green); }
+  .month-label { font-size: 11px; font-weight: 700; letter-spacing: .14em; color: var(--gray); margin-bottom: 6px; transition: color .2s; }
+  .month-title { font-family: var(--font-display); font-size: 22px; color: var(--white); letter-spacing: .5px; }
+  .program-detail {
+    background: var(--dark2);
+    padding: 40px;
+    border-left: 3px solid var(--green);
+    position: sticky; top: 90px;
+  }
+  .detail-month { font-size: 11px; font-weight: 700; letter-spacing: .14em; color: var(--green); margin-bottom: 12px; }
+  .detail-title { font-family: var(--font-display); font-size: 36px; color: var(--white); margin-bottom: 16px; letter-spacing: .5px; }
+  .detail-body { font-size: 15px; color: var(--gray); line-height: 1.85; margin-bottom: 24px; }
+  .detail-list { list-style: none; }
+  .detail-list li {
+    font-size: 14px; color: var(--white);
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    display: flex; align-items: center; gap: 12px;
+  }
+  .detail-list li::before {
+    content: '';
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--green);
+    flex-shrink: 0;
+  }
+
+  /* TESTIMONIALS */
+  .testimonials { background: var(--dark); }
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2px;
+    margin-top: 60px;
+  }
+  .testimonial-card {
+    background: var(--dark2);
+    padding: 36px 32px;
+    position: relative;
+  }
+  .testimonial-card::before {
+    content: '"';
+    font-family: var(--font-display);
+    font-size: 80px;
+    color: rgba(29,185,84,0.15);
+    position: absolute;
+    top: 16px; right: 24px;
+    line-height: 1;
+  }
+  .test-stars { color: var(--green); font-size: 14px; letter-spacing: 2px; margin-bottom: 16px; }
+  .test-text { font-size: 15px; color: var(--gray); line-height: 1.85; margin-bottom: 24px; font-style: italic; }
+  .test-name { font-family: var(--font-display); font-size: 20px; color: var(--white); letter-spacing: .5px; }
+  .test-role { font-size: 12px; color: var(--green); margin-top: 2px; }
+  .test-country { font-size: 11px; color: var(--gray); margin-top: 2px; }
+
+  /* PRICE */
+  .price-section { text-align: center; }
+  .price-card {
+    max-width: 480px;
+    margin: 60px auto 0;
+    background: var(--dark2);
+    border: 1px solid rgba(29,185,84,0.3);
+    border-radius: 8px;
+    padding: 56px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .price-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, var(--green), var(--green-light));
+  }
+  .price-badge {
+    display: inline-block;
+    background: var(--green);
+    color: var(--black);
+    font-size: 11px; font-weight: 700; letter-spacing: .14em;
+    padding: 5px 14px; border-radius: 3px;
+    margin-bottom: 24px;
+  }
+  .price-num {
+    font-family: var(--font-display);
+    font-size: 90px;
+    line-height: 1;
+    color: var(--white);
+  }
+  .price-period { font-size: 14px; color: var(--gray); margin-top: 4px; margin-bottom: 36px; }
+  .price-features { list-style: none; text-align: left; margin-bottom: 40px; }
+  .price-features li {
+    font-size: 15px;
+    color: var(--white);
+    padding: 11px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    display: flex; align-items: center; gap: 12px;
+  }
+  .price-features li .check {
+    width: 20px; height: 20px; border-radius: 50%;
+    background: rgba(29,185,84,0.15);
+    border: 1px solid rgba(29,185,84,0.4);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 11px;
+    color: var(--green);
+  }
+
+  /* OBJECTIONS */
+  .objections { background: var(--dark); }
+  .obj-list { margin-top: 50px; max-width: 720px; }
+  .obj-item {
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    overflow: hidden;
+  }
+  .obj-q {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 24px 0;
+    cursor: pointer;
+    gap: 20px;
+    user-select: none;
+  }
+  .obj-q-text { font-family: var(--font-display); font-size: 22px; color: var(--white); letter-spacing: .5px; }
+  .obj-icon {
+    width: 32px; height: 32px; border-radius: 50%;
+    border: 1px solid rgba(29,185,84,0.3);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--green); font-size: 18px;
+    flex-shrink: 0;
+    transition: background .2s, transform .3s;
+  }
+  .obj-item.open .obj-icon { background: var(--green); color: var(--black); transform: rotate(45deg); }
+  .obj-a {
+    max-height: 0; overflow: hidden;
+    transition: max-height .4s ease, padding .3s ease;
+  }
+  .obj-a-inner { padding-bottom: 24px; font-size: 15px; color: var(--gray); line-height: 1.85; max-width: 620px; }
+  .obj-item.open .obj-a { max-height: 200px; }
+
+  /* COUNTRIES */
+  .countries { text-align: center; }
+  .countries-strip {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;
+    margin-top: 48px;
+  }
+  .country-tag {
+    background: var(--dark2);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: var(--white);
+    font-size: 13px;
+    padding: 8px 20px;
+    border-radius: 40px;
+    transition: border-color .2s, color .2s;
+  }
+  .country-tag:hover { border-color: var(--green); color: var(--green); }
+
+  /* CTA BANNER */
+  .cta-banner {
+    background: var(--green);
+    padding: 80px 40px;
+    text-align: center;
+  }
+  .cta-banner h2 {
+    font-family: var(--font-display);
+    font-size: clamp(50px, 8vw, 100px);
+    color: var(--black);
+    line-height: .95;
+    letter-spacing: .5px;
+    margin-bottom: 24px;
+  }
+  .cta-banner p { font-size: 18px; color: rgba(0,0,0,0.6); max-width: 480px; margin: 0 auto 36px; }
+  .btn-dark {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 15px; font-weight: 700;
+    letter-spacing: .06em;
+    padding: 18px 44px;
+    border: none; border-radius: 4px;
+    cursor: pointer; text-decoration: none;
+    display: inline-block;
+    transition: transform .15s, opacity .2s;
+  }
+  .btn-dark:hover { transform: translateY(-2px); opacity: .85; }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark);
+    padding: 60px 40px 40px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .footer-top { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 32px; margin-bottom: 48px; }
+  .footer-logo { font-family: var(--font-display); font-size: 36px; color: var(--green); letter-spacing: 2px; }
+  .footer-tagline { font-size: 13px; color: var(--gray); margin-top: 8px; max-width: 260px; }
+  .footer-links { display: flex; gap: 48px; flex-wrap: wrap; }
+  .footer-col h4 { font-size: 12px; font-weight: 700; letter-spacing: .14em; color: var(--white); text-transform: uppercase; margin-bottom: 16px; }
+  .footer-col a { display: block; font-size: 13px; color: var(--gray); text-decoration: none; margin-bottom: 10px; transition: color .2s; }
+  .footer-col a:hover { color: var(--white); }
+  .footer-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: var(--gray); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* REVEAL */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity .7s ease, transform .7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 14px 20px; }
+    .nav-links { display: none; }
+    section { padding: 70px 20px; }
+    .hero { padding: 140px 20px 60px; }
+    .program-grid { grid-template-columns: 1fr; }
+    .program-detail { position: relative; top: 0; }
+    footer { padding: 40px 20px 30px; }
+    .cta-banner { padding: 60px 20px; }
+    .footer-top { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">CUPOD</div>
+  <div class="nav-links">
+    <a href="#program">Program</a>
+    <a href="#how">How It Works</a>
+    <a href="#stories">Stories</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#enroll" class="nav-cta">Enroll Now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-noise"></div>
+  <div class="hero-tag">Online English Communication Academy</div>
+  <h1>SPEAK.<br><em>LEAD.</em><br>GROW.</h1>
+  <p class="hero-sub">3 months. 3 sessions a week. One transformative program that turns hesitation into confidence — and confidence into career growth.</p>
+  <div class="hero-actions">
+    <a href="#enroll" class="btn-primary">Start Your Journey</a>
+    <a href="#program" class="btn-outline">See the Program</a>
+  </div>
+  <div class="hero-stats">
+    <div>
+      <div class="hero-stat-num">10+</div>
+      <div class="hero-stat-lbl">Countries represented</div>
+    </div>
+    <div>
+      <div class="hero-stat-num">36</div>
+      <div class="hero-stat-lbl">Live sessions per program</div>
+    </div>
+    <div>
+      <div class="hero-stat-num">3</div>
+      <div class="hero-stat-lbl">Months to fluency</div>
+    </div>
+    <div>
+      <div class="hero-stat-num">100%</div>
+      <div class="hero-stat-lbl">Online & live</div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-inner">
+    <span>SPEAK WITH CONFIDENCE</span><span class="ticker-dot">✦</span>
+    <span>BUSINESS ENGLISH</span><span class="ticker-dot">✦</span>
+    <span>REAL-LIFE ROLE PLAY</span><span class="ticker-dot">✦</span>
+    <span>GROUP SESSIONS</span><span class="ticker-dot">✦</span>
+    <span>CAREER GROWTH</span><span class="ticker-dot">✦</span>
+    <span>BECOME THE NEXT SUCCESS STORY</span><span class="ticker-dot">✦</span>
+    <span>SPEAK WITH CONFIDENCE</span><span class="ticker-dot">✦</span>
+    <span>BUSINESS ENGLISH</span><span class="ticker-dot">✦</span>
+    <span>REAL-LIFE ROLE PLAY</span><span class="ticker-dot">✦</span>
+    <span>GROUP SESSIONS</span><span class="ticker-dot">✦</span>
+    <span>CAREER GROWTH</span><span class="ticker-dot">✦</span>
+    <span>BECOME THE NEXT SUCCESS STORY</span><span class="ticker-dot">✦</span>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="section-label reveal">How It Works</div>
+  <div class="section-title reveal">SIMPLE.<br>STRUCTURED.<br>EFFECTIVE.</div>
+  <div class="steps-grid">
+    <div class="step-card reveal">
+      <div class="step-num">01</div>
+      <div class="step-title">Join the Community</div>
+      <div class="step-body">Enroll online in minutes. You're placed in a live group of driven adults from across the Arab world and beyond — all with one goal: communicate better.</div>
+      <div class="step-pills"><span class="pill">Online</span><span class="pill">Live Group</span></div>
+    </div>
+    <div class="step-card reveal">
+      <div class="step-num">02</div>
+      <div class="step-title">Train 3× a Week</div>
+      <div class="step-body">Three structured sessions every week on Zoom. Every session is interactive — speaking drills, role-play, real conversation. No passive watching.</div>
+      <div class="step-pills"><span class="pill">Mon / Wed / Thu</span><span class="pill">Role-Play</span></div>
+    </div>
+    <div class="step-card reveal">
+      <div class="step-num">03</div>
+      <div class="step-title">Level Up Monthly</div>
+      <div class="step-body">Each month unlocks new skills and a game-based challenge that pushes your communication under pressure — the best way to make it stick.</div>
+      <div class="step-pills"><span class="pill">Game Challenge</span><span class="pill">Real Scenarios</span></div>
+    </div>
+    <div class="step-card reveal">
+      <div class="step-num">04</div>
+      <div class="step-title">Graduate Ready</div>
+      <div class="step-body">After 3 months you leave with fluency in professional English, interview confidence, and a network of peers who keep you accountable.</div>
+      <div class="step-pills"><span class="pill">Certificate</span><span class="pill">Career-Ready</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM -->
+<section id="program" style="background: var(--black);">
+  <div class="section-label reveal">The 3-Month Program</div>
+  <div class="section-title reveal">YOUR<br>ROADMAP</div>
+  <div class="program-grid">
+    <div class="program-months reveal">
+      <div class="month-card active" onclick="selectMonth(0, this)">
+        <div class="month-label">Month 1</div>
+        <div class="month-title">FOUNDATION</div>
+      </div>
+      <div class="month-card" onclick="selectMonth(1, this)">
+        <div class="month-label">Month 2</div>
+        <div class="month-title">BUSINESS ENGLISH</div>
+      </div>
+      <div class="month-card" onclick="selectMonth(2, this)">
+        <div class="month-label">Month 3</div>
+        <div class="month-title">MASTERY</div>
+      </div>
+    </div>
+    <div class="program-detail reveal" id="program-detail">
+      <div class="detail-month" id="d-label">Month 1 — Foundation</div>
+      <div class="detail-title" id="d-title">BUILD YOUR CONFIDENCE</div>
+      <div class="detail-body" id="d-body">You start by removing hesitation. Through daily speaking drills and pronunciation work, you go from avoiding English conversations to actively seeking them.</div>
+      <ul class="detail-list" id="d-list">
+        <li>Pronunciation & fluency drills</li>
+        <li>Everyday workplace vocabulary</li>
+        <li>Speaking under time pressure</li>
+        <li>Peer role-play scenarios</li>
+        <li>Month 1 game challenge</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="stories">
+  <div class="section-label reveal">Success Stories</div>
+  <div class="section-title reveal">THEY DID IT.<br>YOU'RE NEXT.</div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card reveal">
+      <div class="test-stars">★★★★★</div>
+      <div class="test-text">"It has been a pleasure. I truly appreciate the continuous efforts that allowed us to carry out our daily work with confidence and mutual respect."</div>
+      <div class="test-name">Hoda</div>
+      <div class="test-role">CUPOD Graduate</div>
+      <div class="test-country">Lebanon</div>
+    </div>
+    <div class="testimonial-card reveal">
+      <div class="test-stars">★★★★★</div>
+      <div class="test-text">"My goal was to communicate with clients in English professionally. CUPOD gave me exactly that — and more than I expected."</div>
+      <div class="test-name">Israa</div>
+      <div class="test-role">Business Professional</div>
+      <div class="test-country">Jordan</div>
+    </div>
+    <div class="testimonial-card reveal">
+      <div class="test-stars">★★★★★</div>
+      <div class="test-text">"I didn't know anyone who truly mastered English before CUPOD. Taking the first step changed everything for my career."</div>
+      <div class="test-name">Christy</div>
+      <div class="test-role">Career Changer</div>
+      <div class="test-country">Syria</div>
+    </div>
+  </div>
+</section>
+
+<!-- COUNTRIES -->
+<section class="countries" style="background: var(--black);">
+  <div class="section-label reveal">Our Community</div>
+  <div class="section-title reveal">STUDENTS FROM<br>10+ COUNTRIES</div>
+  <div class="countries-strip reveal">
+    <div class="country-tag">🇱🇧 Lebanon</div>
+    <div class="country-tag">🇯🇴 Jordan</div>
+    <div class="country-tag">🇵🇸 Palestine</div>
+    <div class="country-tag">🇸🇾 Syria</div>
+    <div class="country-tag">🇸🇦 Saudi Arabia</div>
+    <div class="country-tag">🇪🇬 Egypt</div>
+    <div class="country-tag">🇮🇶 Iraq</div>
+    <div class="country-tag">🇦🇪 UAE</div>
+    <div class="country-tag">🇩🇿 Algeria</div>
+    <div class="country-tag">🇲🇦 Morocco</div>
+    <div class="country-tag">+ more</div>
+  </div>
+</section>
+
+<!-- OBJECTIONS -->
+<section class="objections">
+  <div class="section-label reveal">Common Questions</div>
+  <div class="section-title reveal">GOT<br>QUESTIONS?</div>
+  <div class="obj-list">
+    <div class="obj-item">
+      <div class="obj-q" onclick="toggleObj(this)">
+        <span class="obj-q-text">Is it really effective if it's online?</span>
+        <span class="obj-icon">+</span>
+      </div>
+      <div class="obj-a">
+        <div class="obj-a-inner">Yes — and here's why online works better for busy adults. No commute, no fixed location, and you practice from a space where you're already comfortable. This actually reduces anxiety and makes you speak more freely. CUPOD is built for live speaking practice — not recorded lectures. Every session is live, interactive, and centered on real conversation.</div>
+      </div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-q" onclick="toggleObj(this)">
+        <span class="obj-q-text">Why group sessions instead of private?</span>
+        <span class="obj-icon">+</span>
+      </div>
+      <div class="obj-a">
+        <div class="obj-a-inner">Because real communication happens between people — not between you and a teacher. In a group, you learn to listen, respond, interrupt politely, and disagree professionally. You hear different accents and perspectives. And the group creates social accountability. Private tutoring costs 3× more and gives you half the real-world practice you actually need.</div>
+      </div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-q" onclick="toggleObj(this)">
+        <span class="obj-q-text">Why start now instead of waiting?</span>
+        <span class="obj-icon">+</span>
+      </div>
+      <div class="obj-a">
+        <div class="obj-a-inner">Every month you delay is another month of missed opportunities — job applications not sent, promotions not pursued, conversations avoided. Language confidence compounds. 3 months of consistent practice creates habits that last years. The people who wait until they're "ready" rarely start. If a better job and clearer communication matter to you — that time is now.</div>
+      </div>
+    </div>
+    <div class="obj-item">
+      <div class="obj-q" onclick="toggleObj(this)">
+        <span class="obj-q-text">What if my English level is too low?</span>
+        <span class="obj-icon">+</span>
+      </div>
+      <div class="obj-a">
+        <div class="obj-a-inner">CUPOD is designed for adults who already have basic English but struggle to use it confidently in real situations. The program starts at your level and builds from there. You don't need to be perfect — you need to be willing to practice. That's all.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="price-section" id="pricing">
+  <div class="section-label reveal" style="text-align:center">Investment</div>
+  <div class="section-title reveal">ONE PRICE.<br>FULL ACCESS.</div>
+  <div class="price-card reveal">
+    <div class="price-badge">FULL 3-MONTH PROGRAM</div>
+    <div class="price-num">$350</div>
+    <div class="price-period">One-time · Full program · No hidden fees</div>
+    <ul class="price-features">
+      <li><span class="check">✓</span>36 live group sessions</li>
+      <li><span class="check">✓</span>Business communication training</li>
+      <li><span class="check">✓</span>Real-life role-play scenarios</li>
+      <li><span class="check">✓</span>Monthly game-based challenges</li>
+      <li><span class="check">✓</span>Interactive activities every session</li>
+      <li><span class="check">✓</span>Access to CUPOD community</li>
+      <li><span class="check">✓</span>Certificate of completion</li>
+    </ul>
+    <a href="#enroll" class="btn-primary" style="width:100%;text-align:center;font-size:15px;">Enroll for $350 →</a>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner" id="enroll">
+  <h2>BECOME THE<br>NEXT SUCCESS<br>STORY.</h2>
+  <p>Join professionals and job seekers from 10+ countries who transformed their English and their careers.</p>
+  <a href="https://instagram.com/cupodarabia" class="btn-dark">Join CUPOD Today</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">CUPOD</div>
+      <div class="footer-tagline">Online English communication training for professionals and job seekers.</div>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <h4>Program</h4>
+        <a href="#how">How It Works</a>
+        <a href="#program">The 3 Months</a>
+        <a href="#pricing">Pricing</a>
+      </div>
+      <div class="footer-col">
+        <h4>Community</h4>
+        <a href="#stories">Success Stories</a>
+        <a href="https://instagram.com/cupodarabia">Instagram</a>
+      </div>
+      <div class="footer-col">
+        <h4>Enroll</h4>
+        <a href="#enroll">Start Now</a>
+        <a href="#pricing">See Pricing</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 CUPOD. All rights reserved.</span>
+    <span>cupodarabia</span>
+  </div>
+</footer>
+
+<script>
+  // SCROLL REVEAL
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  // OBJECTION ACCORDION
+  function toggleObj(header) {
+    const item = header.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.obj-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // PROGRAM MONTHS
+  const months = [
+    {
+      label: 'Month 1 — Foundation',
+      title: 'BUILD YOUR CONFIDENCE',
+      body: 'You start by removing hesitation. Through daily speaking drills and pronunciation work, you go from avoiding English conversations to actively seeking them out in every professional setting.',
+      list: ['Pronunciation & fluency drills', 'Everyday workplace vocabulary', 'Speaking under time pressure', 'Peer role-play scenarios', 'Month 1 game challenge']
+    },
+    {
+      label: 'Month 2 — Business English',
+      title: 'TALK LIKE A PROFESSIONAL',
+      body: 'You handle meetings, emails, and workplace conversations with ease. You learn to present ideas clearly, ask smart questions, and respond confidently under pressure — with a game-based challenge to lock in progress.',
+      list: ['Meetings & presentations', 'Professional email writing', 'Workplace negotiations', 'Cold networking conversations', 'Month 2 game challenge']
+    },
+    {
+      label: 'Month 3 — Mastery',
+      title: 'READY FOR YOUR NEXT LEVEL',
+      body: 'You simulate job interviews, client calls, and high-stakes negotiations. You graduate with fluency in professional English, a full communication toolkit, and the confidence to use it every single day.',
+      list: ['Job interview simulation', 'Client & stakeholder calls', 'Salary negotiation role-play', 'Leadership communication', 'Final challenge & graduation']
+    }
+  ];
+
+  function selectMonth(idx, el) {
+    document.querySelectorAll('.month-card').forEach(c => c.classList.remove('active'));
+    el.classList.add('active');
+    const m = months[idx];
+    document.getElementById('d-label').textContent = m.label;
+    document.getElementById('d-title').textContent = m.title;
+    document.getElementById('d-body').textContent = m.body;
+    const list = document.getElementById('d-list');
+    list.innerHTML = m.list.map(i => `<li>${i}</li>`).join('');
+    const detail = document.getElementById('program-detail');
+    detail.style.opacity = '0'; detail.style.transform = 'translateY(10px)';
+    setTimeout(() => { detail.style.transition = 'opacity .3s, transform .3s'; detail.style.opacity = '1'; detail.style.transform = 'none'; }, 20);
+  }
+</script>
+</body>
+</html>
