@@ -1051,6 +1051,281 @@
   </div>
 </section>
 
+
+<!-- ============ SIGN UP ============ -->
+<section id="signup" style="background:var(--cream-deep); padding:96px 0; position:relative; overflow:hidden; z-index:2;">
+
+  <!-- bg watermark -->
+  <div style="position:absolute;top:-60px;right:-80px;font-family:'Fraunces',serif;font-size:380px;font-weight:900;color:rgba(107,122,46,.05);line-height:1;pointer-events:none;user-select:none;">102</div>
+
+  <style>
+    .signup-inner {
+      max-width:1280px; margin:0 auto; padding:0 32px;
+      display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center;
+    }
+    @media(max-width:860px){ .signup-inner{ grid-template-columns:1fr; gap:40px; } }
+
+    .signup-left {}
+    .signup-eyebrow {
+      font-size:11px; font-weight:700; letter-spacing:.22em; text-transform:uppercase;
+      color:var(--olive); margin-bottom:20px;
+      display:flex; align-items:center; gap:12px;
+    }
+    .signup-eyebrow::before{ content:''; width:28px; height:1.5px; background:var(--olive); }
+    .signup-title {
+      font-family:'Fraunces',serif; font-size:clamp(32px,4.5vw,52px);
+      font-weight:300; font-style:italic; line-height:1.12;
+      color:var(--ink); margin-bottom:16px; letter-spacing:-.02em;
+    }
+    .signup-title strong { font-style:normal; font-weight:800; color:var(--forest); }
+    .signup-desc { font-size:16px; color:var(--ink-mute); line-height:1.75; margin-bottom:28px; }
+
+    .signup-perks { list-style:none; display:flex; flex-direction:column; gap:12px; }
+    .signup-perks li {
+      display:flex; align-items:flex-start; gap:12px;
+      font-size:14px; color:var(--ink-mute); line-height:1.5;
+    }
+    .signup-perks li .perk-dot {
+      width:8px; height:8px; border-radius:50%; background:var(--olive);
+      margin-top:5px; flex-shrink:0;
+    }
+    .signup-perks li strong { color:var(--ink); font-weight:600; }
+
+    /* ── FORM ── */
+    .signup-form-wrap {
+      background:var(--forest); border-radius:20px; padding:48px 40px;
+      position:relative; overflow:hidden;
+    }
+    .signup-form-wrap::before {
+      content:''; position:absolute; top:-80px; right:-80px;
+      width:220px; height:220px; border-radius:50%;
+      background:radial-gradient(circle, rgba(107,122,46,.25) 0%, transparent 70%);
+      pointer-events:none;
+    }
+    .signup-form-title {
+      font-family:'Fraunces',serif; font-size:26px; font-weight:700;
+      color:var(--cream); margin-bottom:6px;
+    }
+    .signup-form-sub { font-size:13px; color:rgba(241,234,214,.5); margin-bottom:32px; }
+
+    .form-group { margin-bottom:16px; }
+    .form-group label {
+      display:block; font-size:12px; font-weight:700; letter-spacing:.08em;
+      color:rgba(241,234,214,.6); text-transform:uppercase; margin-bottom:7px;
+    }
+    .form-group input {
+      width:100%; padding:13px 16px; border-radius:10px;
+      border:1px solid rgba(241,234,214,.15); background:rgba(241,234,214,.07);
+      color:var(--cream); font-size:14px; font-family:'Manrope',sans-serif;
+      outline:none; transition:border-color .2s, background .2s;
+    }
+    .form-group input::placeholder { color:rgba(241,234,214,.25); }
+    .form-group input:focus {
+      border-color:var(--olive); background:rgba(107,122,46,.1);
+    }
+    .form-group input.error { border-color:var(--pimento); }
+
+    .signup-btn {
+      width:100%; padding:15px; border-radius:999px;
+      background:var(--cream); color:var(--forest);
+      font-size:14px; font-weight:800; font-family:'Manrope',sans-serif;
+      letter-spacing:.04em; border:none; cursor:pointer;
+      transition:all .25s ease; margin-top:8px;
+    }
+    .signup-btn:hover { background:var(--pimento); color:var(--cream); transform:translateY(-2px); }
+    .signup-btn:active { transform:translateY(0); }
+
+    .signup-login-line {
+      text-align:center; margin-top:20px;
+      font-size:13px; color:rgba(241,234,214,.4);
+    }
+    .signup-login-line a {
+      color:var(--olive-light); font-weight:600; text-decoration:none;
+    }
+    .signup-login-line a:hover { color:var(--cream); }
+
+    .form-error-msg {
+      font-size:12px; color:var(--pimento); margin-top:4px; display:none;
+    }
+    .signup-success {
+      display:none; text-align:center; padding:20px 0;
+    }
+    .signup-success .check {
+      width:64px; height:64px; border-radius:50%; background:var(--olive);
+      display:flex; align-items:center; justify-content:center;
+      margin:0 auto 16px; font-size:28px;
+    }
+    .signup-success h3 {
+      font-family:'Fraunces',serif; font-size:24px; font-weight:700;
+      color:var(--cream); margin-bottom:8px;
+    }
+    .signup-success p { font-size:13px; color:rgba(241,234,214,.5); margin-bottom:20px; }
+    .signup-success .go-btn {
+      display:inline-block; padding:13px 32px; border-radius:999px;
+      background:var(--olive); color:var(--cream);
+      font-size:13px; font-weight:700; text-decoration:none; letter-spacing:.04em;
+      transition:all .25s;
+    }
+    .signup-success .go-btn:hover { background:var(--pimento); }
+  </style>
+
+  <div class="signup-inner">
+
+    <!-- LEFT COPY -->
+    <div class="signup-left">
+      <div class="signup-eyebrow">Member Access</div>
+      <h2 class="signup-title">
+        Get the full <strong>102 strategy</strong><br/>
+        for free — in one place.
+      </h2>
+      <p class="signup-desc">
+        Sign up and get instant access to the 102 Members Area — your private hub for everything you need to build and grow your digital business.
+      </p>
+      <ul class="signup-perks">
+        <li>
+          <span class="perk-dot"></span>
+          <span><strong>Complete Instagram Strategy</strong> — 90-day content plan, captions, hashtag banks, weekly calendar</span>
+        </li>
+        <li>
+          <span class="perk-dot"></span>
+          <span><strong>Meta Ads Starter Guide</strong> — step-by-step campaign setup from scratch</span>
+        </li>
+        <li>
+          <span class="perk-dot"></span>
+          <span><strong>Free Resources & Templates</strong> — Excel templates, caption templates, post ideas</span>
+        </li>
+        <li>
+          <span class="perk-dot"></span>
+          <span><strong>Market & Pricing Breakdown</strong> — understand what to charge and how to position your business</span>
+        </li>
+        <li>
+          <span class="perk-dot"></span>
+          <span><strong>Early access to new courses</strong> — members get first access before public launch</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- RIGHT FORM -->
+    <div>
+      <div class="signup-form-wrap">
+
+        <!-- FORM -->
+        <div id="signup-form-inner">
+          <div class="signup-form-title">Create your free account</div>
+          <div class="signup-form-sub">No credit card. No spam. Cancel anytime.</div>
+
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="su-name" placeholder="Your name" autocomplete="name"/>
+            <div class="form-error-msg" id="err-name">Please enter your name.</div>
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" id="su-email" placeholder="you@example.com" autocomplete="email"/>
+            <div class="form-error-msg" id="err-email">Please enter a valid email.</div>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="su-pass" placeholder="Minimum 6 characters"/>
+            <div class="form-error-msg" id="err-pass">Password must be at least 6 characters.</div>
+          </div>
+
+          <button class="signup-btn" onclick="handleSignup()">Create Account &amp; Get Access →</button>
+
+          <div class="signup-login-line">
+            Already a member? <a href="#" onclick="handleLogin(event)">Log in here</a>
+          </div>
+        </div>
+
+        <!-- SUCCESS STATE -->
+        <div class="signup-success" id="signup-success">
+          <div class="check">✓</div>
+          <h3>Welcome to 102!</h3>
+          <p>Your account has been created. You now have access to the full members area.</p>
+          <a href="members.html" class="go-btn">Enter Members Area →</a>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+  function handleSignup() {
+    const name  = document.getElementById('su-name');
+    const email = document.getElementById('su-email');
+    const pass  = document.getElementById('su-pass');
+    let valid = true;
+
+    // Reset
+    ['su-name','su-email','su-pass'].forEach(id => {
+      document.getElementById(id).classList.remove('error');
+    });
+    ['err-name','err-email','err-pass'].forEach(id => {
+      document.getElementById(id).style.display = 'none';
+    });
+
+    if (!name.value.trim()) {
+      name.classList.add('error');
+      document.getElementById('err-name').style.display = 'block';
+      valid = false;
+    }
+    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRe.test(email.value.trim())) {
+      email.classList.add('error');
+      document.getElementById('err-email').style.display = 'block';
+      valid = false;
+    }
+    if (pass.value.length < 6) {
+      pass.classList.add('error');
+      document.getElementById('err-pass').style.display = 'block';
+      valid = false;
+    }
+
+    if (!valid) return;
+
+    // Save to localStorage
+    const users = JSON.parse(localStorage.getItem('102_users') || '[]');
+    const exists = users.find(u => u.email === email.value.trim());
+    if (exists) {
+      email.classList.add('error');
+      document.getElementById('err-email').textContent = 'This email is already registered. Log in instead.';
+      document.getElementById('err-email').style.display = 'block';
+      return;
+    }
+
+    users.push({
+      name: name.value.trim(),
+      email: email.value.trim(),
+      pass: pass.value,
+      joined: new Date().toLocaleDateString('en-GB')
+    });
+    localStorage.setItem('102_users', JSON.stringify(users));
+    localStorage.setItem('102_current_user', JSON.stringify({ name: name.value.trim(), email: email.value.trim() }));
+
+    // Show success
+    document.getElementById('signup-form-inner').style.display = 'none';
+    document.getElementById('signup-success').style.display = 'block';
+  }
+
+  function handleLogin(e) {
+    e.preventDefault();
+    const email = prompt('Enter your email:');
+    const pass  = prompt('Enter your password:');
+    if (!email || !pass) return;
+    const users = JSON.parse(localStorage.getItem('102_users') || '[]');
+    const user  = users.find(u => u.email === email.trim() && u.pass === pass);
+    if (user) {
+      localStorage.setItem('102_current_user', JSON.stringify({ name: user.name, email: user.email }));
+      window.location.href = 'members.html';
+    } else {
+      alert('Incorrect email or password. Please try again.');
+    }
+  }
+  </script>
+</section>
+
+
 <!-- ============ CTA ============ -->
 <section id="cta" class="cta">
   <div class="container">
