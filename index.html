@@ -1,23 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '4468692283450656');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=4468692283450656&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>102 — The Leap From 101 to 102</title>
@@ -784,19 +767,7 @@ src="https://www.facebook.com/tr?id=4468692283450656&ev=PageView&noscript=1"
     transform: translateY(0);
   }
 
-  /* ── Translation button ── */
-  .lang-btn {
-    display: inline-flex; align-items: center; gap: 7px;
-    padding: 8px 16px; border-radius: 999px; border: 1px solid rgba(31,58,26,.22);
-    background: transparent; color: var(--forest);
-    font-size: 13px; font-weight: 600; cursor: pointer;
-    transition: all .25s ease; letter-spacing: .02em;
-    font-family: 'Manrope', sans-serif;
-    margin-right: 10px;
-  }
-  .lang-btn:hover { background: var(--forest); color: var(--cream); border-color: var(--forest); }
-  .lang-btn .lang-icon { font-size: 15px; line-height: 1; }
-  [dir="rtl"] body, body[dir="rtl"] { font-family: 'Noto Sans Arabic', 'Manrope', sans-serif !important; }
+
 
 </style>
 </head>
@@ -815,7 +786,6 @@ src="https://www.facebook.com/tr?id=4468692283450656&ev=PageView&noscript=1"
       <li><a href="#who">For Who</a></li>
     </ul>
     
-    <button id="lang-toggle" class="lang-btn"><span class="lang-icon">🇱🇧</span> AR</button>
     <a href="https://wa.me/96170205798?text=Hi%21%20I%20found%20you%20through%20your%20website%20and%20I%27d%20like%20to%20book%20a%20free%20consultation." target="_blank" class="nav-cta">Get Started</a>
   </div>
 </nav>
@@ -1068,8 +1038,6 @@ src="https://www.facebook.com/tr?id=4468692283450656&ev=PageView&noscript=1"
   </div>
 </section>
 
-
-
 <!-- ============ CTA ============ -->
 <section id="cta" class="cta">
   <div class="container">
@@ -1082,7 +1050,6 @@ src="https://www.facebook.com/tr?id=4468692283450656&ev=PageView&noscript=1"
     <div class="cta-actions">
       <a href="https://wa.me/96170205798?text=Hi%21%20I%20found%20you%20through%20your%20website%20and%20I%27d%20like%20to%20book%20a%20free%20consultation." target="_blank" class="btn btn-primary">Book a free consultation <span class="arrow">→</span></a>
       <a href="courses.html" class="btn btn-ghost">Browse the courses</a>
-      <a href="members.html" class="btn btn-ghost" style="border-color:var(--olive);color:var(--olive-light);">Members Area →</a>
     </div>
     <div style="display:flex; align-items:center; justify-content:center; gap:24px; margin-top:28px; flex-wrap:wrap;">
       <a href="https://www.instagram.com/102.lb" target="_blank" style="display:inline-flex; align-items:center; gap:9px; color:rgba(241,234,214,.6); font-size:14px; font-weight:500; text-decoration:none; transition:color .2s ease;" onmouseover="this.style.color='var(--cream)'" onmouseout="this.style.color='rgba(241,234,214,.6)'">
@@ -1161,206 +1128,6 @@ src="https://www.facebook.com/tr?id=4468692283450656&ev=PageView&noscript=1"
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300..800&display=swap" rel="stylesheet">
-<script>
-(function() {
-  // ── Translation maps ───────────────────────────────────────────────
-  const TRANSLATIONS = {
-    en: {},
-    ar: {
-      // ── NAV ──
-      "Concept": "المفهوم",
-      "Two Paths": "المساران",
-      "Services": "الخدمات",
-      "For Who": "لمن",
-      "Get Started": "ابدأ الآن",
-      "Courses": "الدورات",
-      "Agency": "الوكالة",
-      "Get a quote": "احصل على عرض",
-      // ── INDEX HERO ──
-      "A Marketing Platform & Agency": "منصة تسويق ووكالة رقمية",
-      "Are you stuck at 101?": "هل أنت عالق عند 101؟",
-      "Two ways to get there.": "طريقتان للوصول.",
-      "Learn it yourself": "تعلّم بنفسك",
-      "Have it done for you": "دعنا نتولى ذلك عنك",
-      "Explore the courses": "استكشف الدورات",
-      "Check the offers": "تصفح العروض",
-      "Built for the ones who are serious.": "مصمم لمن هم جادون.",
-      "Ready to make": "مستعد لاتخاذ",
-      "Book a free consultation": "احجز استشارة مجانية",
-      "Browse the courses": "تصفح الدورات",
-      "Built with intention.": "مبني بقصد.",
-      "The leap from 101 to 102.": "القفزة من 101 إلى 102.",
-      // ── FOOTER ──
-      "Platform": "المنصة",
-      "Connect": "تواصل",
-      "Web Design Course": "دورة تصميم المواقع",
-      "Meta Ads Course": "دورة إعلانات ميتا",
-      "Growth Systems": "أنظمة النمو",
-      "Website Builds": "بناء المواقع",
-      "Ad Management": "إدارة الإعلانات",
-      "Marketing Systems": "أنظمة التسويق",
-      "@102.lb": "@102.lb",
-      // ── COURSES PAGE ──
-      "Four courses.": "أربع دورات.",
-      "One complete skill set.": "مجموعة مهارات متكاملة.",
-      "Each course is built around focused sessions — every session is 40 minutes. No filler, no theory overload. Just the systems and tools that give new business owners the power to run their own digital operation.": "كل دورة مبنية حول جلسات مركّزة — كل جلسة 40 دقيقة. لا حشو، لا إفراط في النظريات. فقط الأنظمة والأدوات التي تمكّن أصحاب الأعمال الجدد من إدارة عمليتهم الرقمية.",
-      "Build Your Website": "ابنِ موقعك الإلكتروني",
-      "in a Weekend": "في عطلة نهاية الأسبوع",
-      "Meta Ads That": "إعلانات ميتا التي",
-      "Actually Convert": "تحوّل فعلاً",
-      "Build Your Own": "ابنِ نظامك الخاص",
-      "Financial System": "النظام المالي",
-      "Sales Managing": "إدارة المبيعات",
-      "Systems That Scale": "أنظمة قابلة للتوسع",
-      "No coding required": "لا يلزم برمجة",
-      "Facebook & Instagram": "فيسبوك وإنستغرام",
-      "Excel-based": "مبني على Excel",
-      "Requires Microsoft Excel or Google Sheets": "يتطلب Microsoft Excel أو Google Sheets",
-      "Why 102 Courses": "لماذا دورات 102",
-      "Enrol now": "سجّل الآن",
-      "Talk to the agency instead": "تحدّث مع الوكالة بدلاً من ذلك",
-      "Check the offers instead": "تصفح العروض بدلاً من ذلك",
-      "per session": "لكل جلسة",
-      "OFF": "خصم",
-      // ── AGENCY PAGE ──
-      "We handle": "نحن نتولى",
-      "the digital.": "الجانب الرقمي.",
-      "You run the business.": "أنت تدير العمل.",
-      "You don't have to learn everything.": "لست مضطراً لتعلّم كل شيء.",
-      "Get a free quote": "احصل على عرض مجاني",
-      "Prefer to learn it yourself?": "تفضّل التعلم بنفسك؟",
-      "What We Do For You": "ما نفعله لك",
-      "The same skills we teach —": "نفس المهارات التي ندرّسها —",
-      "done by us, for your business.": "يتم تنفيذها من قِبَلنا، لصالح عملك.",
-      "Get this service": "احصل على هذه الخدمة",
-      "Mirrors Course 1": "يعكس الدورة 1",
-      "Mirrors Course 2": "يعكس الدورة 2",
-      "Mirrors Course 3": "يعكس الدورة 3",
-      "Mirrors Course 4": "يعكس الدورة 4",
-      "Website Creation": "إنشاء الموقع",
-      "Without Coding": "بدون برمجة",
-      "Meta Ads": "إعلانات ميتا",
-      "That Actually Convert": "التي تحوّل فعلاً",
-      "Your Financial System": "نظامك المالي",
-      "Built For You": "مبني لك",
-      "Your Sales System": "نظام مبيعاتك",
-      "How It Works": "كيف يعمل",
-      "Four steps from": "أربع خطوات من",
-      "brief to live.": "الفكرة إلى الإطلاق.",
-      "Discovery Call": "مكالمة اكتشاف",
-      "Custom Proposal": "عرض مخصص",
-      "Build & Launch": "البناء والإطلاق",
-      "Optimise & Grow": "التحسين والنمو",
-      "Why Work With Us": "لماذا العمل معنا",
-      "One Price. Every Service.": "سعر واحد. كل الخدمات.",
-      "No retainers.": "لا رسوم ثابتة.",
-      "No surprises.": "لا مفاجآت.",
-      "Just results.": "فقط النتائج.",
-      "One-time payment, no recurring fees": "دفعة واحدة، لا رسوم متكررة",
-      "Full ownership of all deliverables": "ملكية كاملة لجميع المخرجات",
-      "Free revisions included in every project": "مراجعات مجانية مضمّنة في كل مشروع",
-      "Direct communication with your team": "تواصل مباشر مع فريقك",
-      "per service · one-time": "لكل خدمة · دفعة واحدة",
-      "Get started now": "ابدأ الآن",
-      "Browse services": "تصفح الخدمات",
-      "Our Packages": "باقاتنا",
-      "Choose your": "اختر",
-      "starting point.": "نقطة البداية.",
-      "Starter": "المبتدئ",
-      "Digital Foundation": "الأساس الرقمي",
-      "Most Popular": "الأكثر شيوعاً",
-      "Growth Engine": "محرك النمو",
-      "Ongoing": "مستمر",
-      "Retainer Partner": "شريك مستمر",
-      "Get a quote": "احصل على عرض",
-      "Contact us to get started": "تواصل معنا للبدء",
-      "Want to learn it instead? Every one of these services is also available as a course.": "تريد تعلّمها بدلاً من ذلك؟ كل هذه الخدمات متاحة أيضاً كدورات.",
-      "Browse the courses": "تصفح الدورات",
-      "Email us directly": "راسلنا مباشرة",
-      "Browse courses instead": "تصفح الدورات بدلاً من ذلك",
-      "© 2026 102. The leap from 101 to 102.": "© 2026 102. القفزة من 101 إلى 102.",
-      "← Back to home": "← العودة للرئيسية",
-    }
-  };
-
-  // ── Core engine ────────────────────────────────────────────────────
-  const LANG_KEY = '102_lang';
-
-  function getLang() {
-    return localStorage.getItem(LANG_KEY) || 'en';
-  }
-
-  function setLang(lang) {
-    localStorage.setItem(LANG_KEY, lang);
-  }
-
-  function applyLang(lang) {
-    const isAr = lang === 'ar';
-    document.documentElement.setAttribute('dir', isAr ? 'rtl' : 'ltr');
-    document.documentElement.setAttribute('lang', lang);
-    if (isAr) {
-      document.body.style.fontFamily = "'Noto Sans Arabic', 'Manrope', sans-serif";
-    } else {
-      document.body.style.fontFamily = "";
-    }
-
-    // Translate all text nodes
-    const map = TRANSLATIONS[lang === 'ar' ? 'ar' : 'en'];
-    const enMap = TRANSLATIONS['ar']; // English originals are keys
-
-    function translateNode(node) {
-      if (node.nodeType === 3) { // text node
-        const original = node._originalText !== undefined ? node._originalText : node.textContent;
-        if (node._originalText === undefined) node._originalText = node.textContent.trim();
-        const trimmed = node.textContent.trim();
-        if (!trimmed) return;
-        if (isAr && TRANSLATIONS.ar[trimmed]) {
-          node.textContent = node.textContent.replace(trimmed, TRANSLATIONS.ar[trimmed]);
-        } else if (!isAr && node._originalText) {
-          node.textContent = node._originalText;
-        }
-      } else if (node.nodeType === 1 && node.tagName !== 'SCRIPT' && node.tagName !== 'STYLE') {
-        // Translate placeholder and alt attributes
-        if (node.placeholder && TRANSLATIONS.ar[node.placeholder]) {
-          if (!node._origPlaceholder) node._origPlaceholder = node.placeholder;
-          node.placeholder = isAr ? TRANSLATIONS.ar[node._origPlaceholder] : node._origPlaceholder;
-        }
-        for (const child of node.childNodes) {
-          translateNode(child);
-        }
-      }
-    }
-
-    translateNode(document.body);
-
-    // Update button label
-    const btn = document.getElementById('lang-toggle');
-    if (btn) {
-      btn.innerHTML = isAr
-        ? '<span class="lang-icon">🇬🇧</span> EN'
-        : '<span class="lang-icon">🇦🇪</span> AR';
-    }
-
-    setLang(lang);
-  }
-
-  // ── On page load ───────────────────────────────────────────────────
-  document.addEventListener('DOMContentLoaded', function() {
-    const saved = getLang();
-    if (saved === 'ar') {
-      applyLang('ar');
-    }
-
-    const btn = document.getElementById('lang-toggle');
-    if (btn) {
-      btn.addEventListener('click', function() {
-        const current = getLang();
-        applyLang(current === 'ar' ? 'en' : 'ar');
-      });
-    }
-  });
-})();
-</script>
 
 </body>
 </html>
